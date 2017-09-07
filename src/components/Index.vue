@@ -1,8 +1,6 @@
 <template>
   <div>
-  	<group>
-  		<x-header :left-options="{showBack: false}">首页</x-header>
-  	</group>
+  	<x-header :left-options="{showBack: false}">首页</x-header>
   	<swiper loop auto :list="demo03_list" :index="demo06_index" @on-index-change="demo06_onIndexChange"></swiper>
   	<!--
    	<group>
