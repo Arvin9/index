@@ -14,7 +14,6 @@
 import { AjaxPlugin, XHeader, Swiper, Group, Cell } from 'vux'
 
 const imgList = [
-  'http://placeholder.qiniudn.com/800x300/FF3B3B/ffffff'
 ]
 
 const demoList = imgList.map((one, index) => ({
@@ -32,10 +31,13 @@ export default {
   },
   created: function () {
     let _this = this
-    getRequest('http://image.nebulous.cn/v1/image/list', function (data) {
+    let params = {
+      imageCategory: 10
+    }
+    postRequest('http://www.abner.top/v1/images/list', params, function (data) {
       let a = data.map((image, index) => ({
         url: 'javascript:',
-        img: 'http://' + image.imageUrl
+        img: image.imageUrl
       }))
       _this.demo03_list = a
     })
@@ -53,12 +55,20 @@ export default {
   }
 }
 
+function postRequest (url, params, cb) {
+  AjaxPlugin.$http.post(url, params)
+  .then((response) => {
+    if (cb) cb(response.data)
+  })
+}
+/*
 function getRequest (url, cb) {
   AjaxPlugin.$http.get(url)
   .then((response) => {
     if (cb) cb(response.data)
   })
 }
+*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
