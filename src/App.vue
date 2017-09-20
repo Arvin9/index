@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
+<style lang="less">
+@import '~vux/src/styles/weui/weui.less';
+</style>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
